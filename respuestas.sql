@@ -1,3 +1,14 @@
+-- PARA EJCUTAR MYSQL DE XAMMP POR CONSOLA CORRE LO SIGUIENTE
+-- FUENTE:
+-- https://platzi.com/tutoriales/1272-sql-mysql/1292-utilizar-mysql-por-consola-si-usas-xampp-en-gnulinux/
+
+            --  COMANDOS
+-- 1.     sudo /opt/lampp/lampp startmysql (ARRANCA EL SERVIDOR)
+-- 2.    /opt/lampp/bin/mysql -u root
+-- 3.     sudo /opt/lampp/lampp stopmysql    (DETIENE L SERVIDOR)
+
+
+
 -- 1. Write a query in SQL to find the number of venues for EURO cup 2016.
 SELECT count(venue_id) FROM soccer_venue;
 +-----------------+
@@ -9,7 +20,7 @@ SELECT count(venue_id) FROM soccer_venue;
 
 -- 2.Write a query in SQL to find the number goals scored in EURO cup 2016 within normal play Schedule
 
-select count(goal_type) from goal_details where goal_type="N";
+select count(goal_type) Goles_tipo_normal from goal_details where goal_type="N";
 +----------------+
 | count(goal_id) |
 +----------------+
@@ -488,3 +499,122 @@ SELECT  *FROM match_mast WHERE stop1_sec=0;
 +----------+------------+------------+---------+------------+------------+----------+------------+---------+--------------+-----------+-----------+
 |        4 | G          | 2016-06-12 | DRAW    | N          | 1-1        |    20005 |      70011 |   62343 |       160128 |         0 |       185 |
 +----------+------------+------------+---------+------------+------------+----------+------------+---------+--------------+-----------+-----------+
+
+-- ----------------------------------------------------------------------
+-- ----------------------------------------------------------------------
+--                    RESPUESTA DE EXAMEN
+-- ----------------------------------------------------------------------
+
+
+-- 1. Escribe una consulta en SQL para encontrar el número de goles anotados en cada
+-- partido dentro del horario de juego normal
+SELECT match_no Partido, count(goal_id) Numero_de_Goles
+FROM goal_details
+WHERE goal_schedule='NT'
+GROUP BY match_no;
+
++---------+-----------------+
+| Partido | Numero_de_Goles |
++---------+-----------------+
+|       1 |               3 |
+|       2 |               1 |
+|       3 |               3 |
+|       4 |               1 |
+|       5 |               1 |
+|       6 |               1 |
+|       7 |               1 |
+|       8 |               1 |
+|       9 |               2 |
+|      10 |               1 |
+|      11 |               2 |
+|      12 |               2 |
+|      13 |               3 |
+|      14 |               2 |
+|      15 |               1 |
+|      16 |               2 |
+|      17 |               1 |
+|      19 |               1 |
+|      20 |               4 |
+|      21 |               3 |
+|      22 |               3 |
+|      23 |               2 |
+|      25 |               1 |
+|      27 |               3 |
+|      29 |               1 |
+|      30 |               1 |
+|      31 |               2 |
+|      32 |               3 |
+|      33 |               2 |
+|      34 |               6 |
+|      35 |               1 |
+|      36 |               1 |
+|      37 |               2 |
+|      38 |               1 |
+|      40 |               3 |
+|      41 |               3 |
+|      42 |               4 |
+|      43 |               1 |
+|      44 |               3 |
+|      45 |               2 |
+|      46 |               4 |
+|      47 |               2 |
+|      48 |               7 |
+|      49 |               2 |
+|      50 |               1 |
++---------+-----------------+
+-- 2. Escribe una consulta en SQL para encontrar el número total de jugadores
+-- reemplazados en el torneo.
+SELECT count(player_id) Cantida_de_reemplazados
+FROM player_in_out 
+WHERE in_out='O';
+
++-------------------------+
+| Cantida_de_reemplazados |
++-------------------------+
+|                     293 |
++-------------------------+
+
+
+-- 3. Escribe una consulta en SQL para encontrar el equipo que fue derrotado por
+-- Portugal en la final de la EURO Cup 2016.
+
+ SELECT soccer_country.country_name Pais_campeon
+ FROM match_details
+ INNER JOIN  soccer_country ON soccer_country.country_id = match_details.team_id
+ WHERE  match_details.play_stage='F'
+ AND match_details.win_loos='L';
+
++--------------+
+| Pais_campeon |
++--------------+
+| France       |
++--------------+
+
+-- 4. Escribe una consulta en SQL para encontrar el número de Alemania anotado en el
+-- torneo.
+
+SELECT  soccer_country.country_name Equipo,  count(goal_id) AS  Goles
+FROM  goal_details
+JOIN soccer_country ON soccer_country.country_id=goal_details.team_id
+WHERE soccer_country.country_name='Germany'
+GROUP BY Equipo;
++---------+-------+
+| Equipo  | Goles |
++---------+-------+
+| Germany |     7 |
++---------+-------+
+
+
+-- 5. Escribe una consulta en SQL para encontrar la fecha en la que se jugaron los
+-- partidos de la tanda de penaltis.
+
+SELECT  match_no Partido, play_date Fecha_de_juego, decided_by Dedicido_por
+FROM match_mast
+WHERE  decided_by='P'
++---------+----------------+--------------+
+| Partido | Fecha_de_juego | Dedicido_por |
++---------+----------------+--------------+
+|      37 | 2016-06-25     | P            |
+|      45 | 2016-07-01     | P            |
+|      47 | 2016-07-03     | P            |
++---------+----------------+--------------+

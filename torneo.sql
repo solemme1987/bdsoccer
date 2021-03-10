@@ -29,7 +29,7 @@ CREATE TABLE `asst_referee_mast` (
   PRIMARY KEY (`ass_ref_id`),
   KEY `fk_asst_referee_mast_soccer_country1` (`country_id`),
   CONSTRAINT `fk_asst_referee_mast_soccer_country1` FOREIGN KEY (`country_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `coach_mast` (
   `coach_id` int NOT NULL,
   `coach_name` varchar(40) NOT NULL,
   PRIMARY KEY (`coach_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `goal_details` (
   CONSTRAINT `fk_goal_details_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_goal_details_player_mast1` FOREIGN KEY (`player_id`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_goal_details_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `match_captain` (
   CONSTRAINT `fk_match_captain_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_match_captain_player_mast1` FOREIGN KEY (`player_captain`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_match_captain_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +157,7 @@ CREATE TABLE `match_details` (
   CONSTRAINT `fk_match_details_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_match_details_player_mast1` FOREIGN KEY (`player_gk`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_match_details_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +197,7 @@ CREATE TABLE `match_mast` (
   CONSTRAINT `fk_match_mast_player_mast1` FOREIGN KEY (`plr_of_match`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_match_mast_referee_mast1` FOREIGN KEY (`referee_id`) REFERENCES `referee_mast` (`referee_id`),
   CONSTRAINT `fk_match_mast_soccer_venue1` FOREIGN KEY (`venue_id`) REFERENCES `soccer_venue` (`venue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +227,7 @@ CREATE TABLE `penalty_gk` (
   CONSTRAINT `fk_penalty_gk_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_penalty_gk_player_mast1` FOREIGN KEY (`player_gk`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_penalty_gk_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,7 @@ CREATE TABLE `penalty_shootout` (
   CONSTRAINT `fk_penalty_shootout_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_penalty_shootout_player_mast1` FOREIGN KEY (`player_id`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_penalty_shootout_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +295,7 @@ CREATE TABLE `player_booked` (
   CONSTRAINT `fk_played_booked_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_played_booked_player_mast1` FOREIGN KEY (`player_id`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_played_booked_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,7 +329,7 @@ CREATE TABLE `player_in_out` (
   CONSTRAINT `fk_player_in_out_match_mast1` FOREIGN KEY (`match_no`) REFERENCES `match_mast` (`match_no`),
   CONSTRAINT `fk_player_in_out_player_mast1` FOREIGN KEY (`player_id`) REFERENCES `player_mast` (`player_id`),
   CONSTRAINT `fk_player_in_out_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -363,7 +363,7 @@ CREATE TABLE `player_mast` (
   KEY `fk_player_mast_soccer_country1_idx` (`team_id`),
   CONSTRAINT `fk_player_mast_playing_position` FOREIGN KEY (`posi_to_play`) REFERENCES `playing_position` (`position_id`),
   CONSTRAINT `fk_player_mast_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `playing_position` (
   `position_id` varchar(2) NOT NULL,
   `position_desc` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`position_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -414,7 +414,7 @@ CREATE TABLE `referee_mast` (
   PRIMARY KEY (`referee_id`),
   KEY `country_id` (`country_id`),
   CONSTRAINT `referee_mast_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,7 +441,7 @@ CREATE TABLE `soccer_city` (
   PRIMARY KEY (`city_id`),
   KEY `fk_soccer_city_soccer_country1_idx` (`country_id`),
   CONSTRAINT `fk_soccer_city_soccer_country1` FOREIGN KEY (`country_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,7 +466,7 @@ CREATE TABLE `soccer_country` (
   `country_abbr` varchar(4) NOT NULL,
   `country_name` varchar(40) NOT NULL,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -500,7 +500,7 @@ CREATE TABLE `soccer_team` (
   `group_position` int NOT NULL,
   KEY `fk_soccer_team_soccer_country1` (`team_id`),
   CONSTRAINT `fk_soccer_team_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -528,7 +528,7 @@ CREATE TABLE `soccer_venue` (
   PRIMARY KEY (`venue_id`),
   KEY `fk_soccer_venue_soccer_city1` (`city_id`),
   CONSTRAINT `fk_soccer_venue_soccer_city1` FOREIGN KEY (`city_id`) REFERENCES `soccer_city` (`city_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +556,7 @@ CREATE TABLE `team_coaches` (
   KEY `fk_team_coaches_coach_mast1` (`coach_id`),
   CONSTRAINT `fk_team_coaches_coach_mast1` FOREIGN KEY (`coach_id`) REFERENCES `coach_mast` (`coach_id`),
   CONSTRAINT `fk_team_coaches_soccer_country1` FOREIGN KEY (`team_id`) REFERENCES `soccer_country` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
